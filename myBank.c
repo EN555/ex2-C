@@ -1,22 +1,21 @@
+#include <stdio.h>
 
+double arr [51][2]= {{0},{0}};		//50 rows the number of the accounts ant two columns first for the number of the account and the seconf for the sum of th emonet in the account
 
-Double arr [51][2]= {{0},{0}};		//50 rows the number of the accounts ant two columns first for the number of the account and the seconf for the sum of th emonet in the account
-
-Double isOpenAcoount(Double sumDeposit){		//open an account and insert money
-
-int numberOfAcoount = 0; 		
+int isOpenAcount(double sumDeposit){		//open an account and insert money
+int numberOfAcount = 0; 		
 	for(int i= 1 ; i <= 50 ; i++){
 		if(arr[i][0] == 0)
 		{		
-		numbeOfAccount = 900 + i;		
+		numberOfAcount = 900 + i;		
 		arr[i][0] = 900+i;
 		arr[i][1] = sumDeposit;		//insert the sum of the money to the ne account	
 		}
 	}
-	if(numberOfAcoount ==0){		//mean that no place for another account
+	if(numberOfAcount ==0){		//mean that no place for another account
 		return -1;
 	}
-	else return numbeOfAccount;
+	return numberOfAcount;
 }	
 
 int isExist(int accountNumber){
@@ -28,7 +27,7 @@ return 1;							//this account isn't empty
 }
 
 
-int BalanceInquiry(int accountNumber){
+double BalanceInquiry(int accountNumber){
 	
 if((accountNumber - 900) < 50 && (accountNumber - 900) > 0)
 	{
@@ -40,15 +39,15 @@ else return -1;
 
 
 
-int sumDeposit(int accountNumber , Double sumToAdd){
+double sumDeposit(int accountNumber , double sumToAdd){
 	
 		arr[accountNumber - 901][1] += sumToAdd;
-		return arr[accountNumber - 901][1];
+	return arr[accountNumber - 901][1];
 	
 }
 
 
-int Withdrawal(int accountNumber , double sumToWithdrawal){
+double Withdrawal(int accountNumber , double sumToWithdrawal){
 	
 		if(arr[accountNumber - 901][1] > sumToWithdrawal)
 		{			
@@ -69,7 +68,7 @@ int CloseAccount(int accountNumber){
 }
 
 
-int Interest(int accountNumber, Double interest){
+int Interest(int accountNumber, double interest){
 	
 	for(int i =0 ; i < 50 ; i++)
 	{	
@@ -88,7 +87,7 @@ int Print(){
 	{	
 		if(arr[i][0] != 0 )
 		{
-			printf("The balance of account number%d is: %lf" , arr[i][0],arr[i][1]);
+			printf("The balance of account number%lf is: %lf" , arr[i][0],arr[i][1]);
 		}
 	}
 return 0;	
@@ -96,7 +95,7 @@ return 0;
 
 
 
-public int Exit(){
+int Exit(){
 	for(int i =0 ; i < 50 ; i++)
 	{	
 		arr[i][0]=-1;					//remove the account number

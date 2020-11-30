@@ -1,0 +1,9 @@
+int isOpenAcount();
+int isExist();
+double BalanceInquiry();
+double sumDeposit();
+double Withdrawal();
+int CloseAccount();
+int Interest();
+int Print();
+int Exit();

@@ -5,14 +5,18 @@ int main(){
 char charOperation;
 
 while(scanf("\nPlease choose a transaction type:\nO-Open Account\nB-Balance Inquiry\nD-Deposit\nW-Withdrawal\nC-Close Account\nI-Interest\nP-Print\nE-Exit\n% c" , &charOperation) != EOF){		//all the transaction option
-	
+	double sumDepose;
+	int accountNumber;
+	double sumWithDraw;
+	double interest;
+	double sum;
+	double ans;
 	switch(charOperation)
 	{	
 	case 'O':			//open account and depose money
-		double sumDeposit;
 		if(scanf("Please enter amount for deposit%.2lf" , &sumDeposit)==1 && sumDeposit >=0)		//check if is valid input	
 		{		
-			int ans = isOpenAcoount(sumDeposit);	
+			int ans = isOpenAcount(sumDeposit);	
 			if(ans != -1)					//can open account
 			{
 			printf("New account number is: %d" , ans); 	
@@ -26,11 +30,9 @@ while(scanf("\nPlease choose a transaction type:\nO-Open Account\nB-Balance Inqu
 			
 		}
 			break;
-	case 'B':			//return the sum of the money in the account
-		int accountNumber;
-		
+	case 'B':			//return the sum of the money in the account	
 		if(scanf("Please enter account number%d" , &accountNumber)==1 && accountNumber<=951 && accountNumber>=901 && isExist(accountNumber)){		//check if it's valid account number
-			Double ans = BalanceInquiry(accountNumber);
+			ans = BalanceInquiry(accountNumber);
 			printf("The balance of account number: ans %d is: %.2lf" ,accountNumber , ans);
 		}
 		else{			
@@ -38,14 +40,12 @@ while(scanf("\nPlease choose a transaction type:\nO-Open Account\nB-Balance Inqu
 		}
 			break;
 	case 'D':			//depose money in exist account
-		 int accountNumber;
-		 double sumDeposit;
 		if(scanf("Please enter account number%d" , &accountNumber) == 1 && accountNumber<=951 && accountNumber>=901){	//check if it's valid account number
 			if(!isExist(accountNumber)){
-				if(scanf("Please enter amount for deposit%.2lf" ,&sumDeposit)==1){	
+				if(scanf("Please enter amount for deposit%.2lf" ,&sumDepose)==1){	
 			
 					if(sumDeposit >= 0){
-							Double sum = Deposit(accountNumber ,sumDeposit);
+							sum = sumDeposit(accountNumber ,sumDeposit);
 							printf("The new balance is: %d %.2lf" ,accountNumber , sum);
 						}
 				
@@ -59,7 +59,7 @@ while(scanf("\nPlease choose a transaction type:\nO-Open Account\nB-Balance Inqu
 				}
 			}
 			else{
-					prinft("This account is closed");
+					printf("This account is closed");
 			}
 		}
 		else{
@@ -67,18 +67,16 @@ while(scanf("\nPlease choose a transaction type:\nO-Open Account\nB-Balance Inqu
 		}
 			break;
 	case 'W':
-		int accountNumber;
-		double sumWithDraw;
 		if(scanf("Please enter account number%d" , &accountNumber)==1 && accountNumber<=951 && accountNumber>=901){			
 			
 			if(!isExist(accountNumber)){
 				if(scanf("Please enter the amount to withdraw:%.2lf" ,&sumWithDraw)==1 && sumWithDraw > 0 )
 				{
 					if(Withdrawal(accountNumber , sumWithDraw) != -1){			
-						prinft("The new balance is: %.2lf" , sumWithDraw);
+						printf("The new balance is: %.2lf" , sumWithDraw);
 					}
 					else{
-						prinft("Cannot withdraw more than the balance");			
+						printf("Cannot withdraw more than the balance");			
 					}
 				}
 				else{
@@ -96,7 +94,6 @@ while(scanf("\nPlease choose a transaction type:\nO-Open Account\nB-Balance Inqu
 		}
 		break;	
 	case 'C':
-		int accountNumber;
 		if(scanf("Please enter account number%d" , &accountNumber)==1 && accountNumber<=951 && accountNumber>=901){
 			int state = isExist(accountNumber);		
 			if(state==1){
@@ -113,11 +110,8 @@ while(scanf("\nPlease choose a transaction type:\nO-Open Account\nB-Balance Inqu
 		}
 		break;
 	case 'I':
-		double interest;
-		if(scanf("Please enter interest rate:%.2lf" , &interest)==1){
-			
-			
-			Interest(interest):
+		if(scanf("Please enter interest rate:%.2lf" , &interest)==1){		
+			Interest(interest);
 		}
 		else{
 		prinft("Failed to read the interest rate");	
