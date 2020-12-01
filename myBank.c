@@ -1,15 +1,22 @@
 #include <stdio.h>
 
-double arr [51][2]= {{0},{0}};		//50 rows the number of the accounts ant two columns first for the number of the account and the seconf for the sum of th emonet in the account
+
+
+double arr[51][2] = {{0}};		//50 rows the number of the accounts ant two columns first for the number of the account and the seconf for the sum of th emonet in the account
+
+
+
 
 int isOpenAcount(double sumDeposit){		//open an account and insert money
-int numberOfAcount = 0; 		
+	
+	int numberOfAcount = 0; 		
 	for(int i= 1 ; i <= 50 ; i++){
 		if(arr[i][0] == 0)
 		{		
 		numberOfAcount = 900 + i;		
 		arr[i][0] = 900+i;
 		arr[i][1] = sumDeposit;		//insert the sum of the money to the ne account	
+		break;
 		}
 	}
 	if(numberOfAcount ==0){		//mean that no place for another account
@@ -20,7 +27,7 @@ int numberOfAcount = 0;
 
 int isExist(int accountNumber){
 	
-if(arr[(accountNumber -901)][0]==0)
+if(arr[(accountNumber -900)][0]==0)
 	return 0;								//the account is colsed
 	
 return 1;							//this account isn't empty 
@@ -29,12 +36,7 @@ return 1;							//this account isn't empty
 
 double BalanceInquiry(int accountNumber){
 	
-if((accountNumber - 900) < 50 && (accountNumber - 900) > 0)
-	{
-		return arr[accountNumber - 900][1];
-	}
-else return -1;
-
+		return arr[accountNumber - 901][1];
 }
 
 
