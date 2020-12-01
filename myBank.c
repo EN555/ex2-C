@@ -36,47 +36,47 @@ return 1;							//this account isn't empty
 
 double BalanceInquiry(int accountNumber){
 	
-		return arr[accountNumber - 901][1];
+		return arr[accountNumber - 900][1];
 }
 
 
 
 double sumDeposit(int accountNumber , double sumToAdd){
 	
-		arr[accountNumber - 901][1] += sumToAdd;
-	return arr[accountNumber - 901][1];
+		arr[accountNumber - 900][1] += sumToAdd;
+	return arr[accountNumber - 900][1];
 	
 }
 
 
 double Withdrawal(int accountNumber , double sumToWithdrawal){
 	
-		if(arr[accountNumber - 901][1] > sumToWithdrawal)
+		if(arr[accountNumber - 900][1] > sumToWithdrawal)
 		{			
-			arr[accountNumber - 901][1]	-= sumToWithdrawal;
+			arr[accountNumber - 900][1]	= arr[accountNumber - 900][1] - sumToWithdrawal;
 				return arr[accountNumber - 900][1];
 		}
 	
-else return -1;
+ return -1;
 	
 }
 
 
 int CloseAccount(int accountNumber){
 	
-		arr[accountNumber - 901][0]= -1;
-		arr[accountNumber - 901][1]= 0;;
+		arr[accountNumber - 900][0]= 0;
+		arr[accountNumber - 900][1]= 0;;
 	return 0;
 }
 
 
-int Interest(int accountNumber, double interest){
+int Interest(int accountNumber, int interest){
 	
-	for(int i =0 ; i < 50 ; i++)
+	for(int i =1 ; i <= 51 ; i++)
 	{	
 		if(arr[i][0] != 0 )
 		{
-			arr[i][1] += interest*arr[i][0];
+			arr[i][1] +=  (interest*0.01)*arr[i][0];
 		}
 	
 	}
@@ -85,11 +85,11 @@ return 0;
 
 
 int Print(){
-	for(int i =0 ; i < 50 ; i++)
+	for(int i =1 ; i <= 51 ; i++)
 	{	
 		if(arr[i][0] != 0 )
 		{
-			printf("The balance of account number%lf is: %lf" , arr[i][0],arr[i][1]);
+			printf("The balance of account number %d is: %.2lf\n" , (int)arr[i][0],arr[i][1]);
 		}
 	}
 return 0;	
@@ -98,7 +98,7 @@ return 0;
 
 
 int Exit(){
-	for(int i =0 ; i < 50 ; i++)
+	for(int i =1 ; i <= 51 ; i++)
 	{	
 		arr[i][0]=-1;					//remove the account number
 		arr[i][1]=0;					//remove the sum of the money in the accounts
