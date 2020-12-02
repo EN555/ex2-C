@@ -12,12 +12,12 @@ libmyBank.a: myBank.o
 		$(AR) -rcs libmyBank.a myBank.o
 
 main.o: main.c myBank.h
-		$(cc) $(flags) -c main.c myBank.h
+		$(CC) $(FLAGS) -c main.c myBank.h
 
 myBank.o: myBank.c
-		$(cc) $(flags) -c myBank.c
+		$(CC) $(FLAGS) -c myBank.c
 
 .PHONY: clean all 
 
-clean: 
-	rm -f *.o all
+clean: 							
+	rm -f *.o all *.a main

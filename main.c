@@ -63,7 +63,7 @@ double sumDepose = 0;
 					printf("The balance of account number %d is: %.2lf\n", accountNumber, ans);
 				}
 				else {
-					printf("This account is closed\n");
+					printf("This account is closed\n");		
 				}
 			}
 			else {
@@ -71,7 +71,7 @@ double sumDepose = 0;
 			}
 		}
 		else {
-			printf("Failed to read the account number\n");
+			printf("Failed to read the account number\n");			//didn't succeed to read the input
 		}
 
 	}
@@ -95,7 +95,7 @@ double sumDepose = 0;
 							printf("The new balance is: %.2lf\n", sum);
 						}
 						else {
-							printf("Cannot deposit a negative amount\n");
+							printf("Cannot deposit a negative amount\n");		//can't enter negative number
 						}
 					}
 					else {
@@ -103,11 +103,11 @@ double sumDepose = 0;
 					}
 				}
 				else {
-					printf("This account is closed\n");
+					printf("This account is closed\n");				//can't fount th eeaccount
 				}
 			}
 			else {
-				printf("Invalid account number\n");
+				printf("Invalid account number\n");			
 			}
 
 		}
@@ -125,7 +125,7 @@ double sumDepose = 0;
 
 			if (scanf("%d", &accountNumber) == 1) {
 
-				if (accountNumber < 951 && accountNumber >= 901) {
+				if (accountNumber < 951 && accountNumber >= 901) {			//check if the it's valid account
 
 					if (isExist(accountNumber) != 0) {
 
@@ -140,7 +140,7 @@ double sumDepose = 0;
 								printf("The new balance is: %.2lf\n", sumWithDraw);
 							}
 							else {
-								printf("Cannot withdraw more than the balance\n");
+								printf("Cannot withdraw more than the balance\n");				//try to withdraw more than have him money
 							}
 						}
 						else {
@@ -148,7 +148,7 @@ double sumDepose = 0;
 						}
 					}
 					else {
-						printf("This account is closed\n");
+						printf("This account is closed\n");			//the account not exist
 					}
 				}
 				else {
@@ -160,12 +160,12 @@ double sumDepose = 0;
 			}
 		}
 
-	else if (charOperation == 'C') {
+	else if (charOperation == 'C') {					//close account operation
 		printf("Please enter account number: ");
 
 		if (scanf("%d", &accountNumber) == 1) {
 
-			if (accountNumber < 951 && accountNumber >= 901) {
+			if (accountNumber < 951 && accountNumber >= 901) {			//check if the it's valid account
 
 				if (isExist(accountNumber)) {
 					CloseAccount(accountNumber);
@@ -173,7 +173,7 @@ double sumDepose = 0;
 				}
 				else
 				{
-					printf("This account is already closed\n");
+					printf("This account is already closed\n");		//the account not exist
 				}
 			}
 			else {
@@ -181,16 +181,16 @@ double sumDepose = 0;
 			}
 		}
 		 else{
-				 printf("Failed to read the account number\n");
+				 printf("Failed to read the account number\n");		//didn't succed to read the input
 		 }
 	}
 
-	else if (charOperation == 'I') 
+	else if (charOperation == 'I') 				//insert interest
 	{
 		printf("Please enter interest rate: ");
 		if (scanf("%d", &interest) == 1) {
 			
-			if (interest >= 0) {
+			if (interest > 0) {			//only if interest bigger than zero
 				Interest(interest);
 			}
 			else {
@@ -198,19 +198,20 @@ double sumDepose = 0;
 			}
 		}
 		else {
-			printf("Failed to read the interest rate\n");
+			printf("Failed to read the interest rate\n");		//didn't succeed to get the input
 		}
 	}
 
-	else if (charOperation == 'P') 
+	else if (charOperation == 'P') 				//print all the acounts
 	{
 		Print();
 	}
 
 
-	else if (charOperation == 'E')
+	else if (charOperation == 'E')		//exit from the loop while
 	{
 		Exit();
+		break;
 	}
 
 	else {

@@ -41,7 +41,7 @@ double BalanceInquiry(int accountNumber){
 
 
 
-double sumDeposit(int accountNumber , double sumToAdd){
+double sumDeposit(int accountNumber , double sumToAdd){		//sum to depose in the account
 	
 		arr[accountNumber - 900][1] += sumToAdd;
 	return arr[accountNumber - 900][1];
@@ -49,7 +49,7 @@ double sumDeposit(int accountNumber , double sumToAdd){
 }
 
 
-double Withdrawal(int accountNumber , double sumToWithdrawal){
+double Withdrawal(int accountNumber , double sumToWithdrawal){			//withdraw mony from the account
 	
 		if(arr[accountNumber - 900][1] > sumToWithdrawal)
 		{			
@@ -62,7 +62,7 @@ double Withdrawal(int accountNumber , double sumToWithdrawal){
 }
 
 
-int CloseAccount(int accountNumber){
+int CloseAccount(int accountNumber){			//close only exist account
 	
 		arr[accountNumber - 900][0]= 0;
 		arr[accountNumber - 900][1]= 0;;
@@ -70,13 +70,13 @@ int CloseAccount(int accountNumber){
 }
 
 
-int Interest(int accountNumber, int interest){
+int Interest(int interest){
 	
-	for(int i =1 ; i <= 51 ; i++)
+	for(int i =1 ; i <= 50 ; i++)			//added to all the accounts
 	{	
-		if(arr[i][0] != 0 )
+		if(arr[i][0] != 0 )			//check if the account exist
 		{
-			arr[i][1] +=  (interest*0.01)*arr[i][0];
+			arr[i][1] =  arr[i][1]+ (interest*0.01)*arr[i][1];
 		}
 	
 	}
@@ -85,7 +85,7 @@ return 0;
 
 
 int Print(){
-	for(int i =1 ; i <= 51 ; i++)
+	for(int i =1 ; i <= 50 ; i++)			//move on all the accounts and print them
 	{	
 		if(arr[i][0] != 0 )
 		{
@@ -100,7 +100,7 @@ return 0;
 int Exit(){
 	for(int i =1 ; i <= 51 ; i++)
 	{	
-		arr[i][0]=-1;					//remove the account number
+		arr[i][0]=0;					//remove the account number
 		arr[i][1]=0;					//remove the sum of the money in the accounts
 	}
 return 0;	
