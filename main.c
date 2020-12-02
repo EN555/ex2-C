@@ -189,7 +189,8 @@ double sumDepose = 0;
 	{
 		printf("Please enter interest rate: ");
 		if (scanf("%d", &interest) == 1) {
-			if (Interest <= 0) {
+			
+			if (interest >= 0) {
 				Interest(interest);
 			}
 			else {
